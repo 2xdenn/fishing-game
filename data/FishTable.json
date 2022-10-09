@@ -1,0 +1,17 @@
+{
+  "Rudd": {
+    "FishScaleMin": 1.5,
+    "FishScaleMax": 2.5,
+    "RarityTag": "Common"
+  },
+  "Whale": {
+    "FishScaleMin": 10,
+    "FishScaleMax": 20,
+    "RarityTag": "Rare"
+  },
+  "Ray": {
+    "FishScaleMin": 5,
+    "FishScaleMax": 8,
+    "RarityTag": "Uncommon"
+  }
+}

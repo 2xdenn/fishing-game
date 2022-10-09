@@ -1,0 +1,134 @@
+[gd_scene load_steps=10 format=3 uid="uid://cim88h3uhcb4c"]
+
+[ext_resource type="PackedScene" uid="uid://bh2mc4h27tlsf" path="res://fish/rudd.glb" id="1_eprsn"]
+[ext_resource type="Script" path="res://scripts/fish_rigid_body.gd" id="1_gexij"]
+[ext_resource type="AudioStream" uid="uid://dkcsbjk662kxb" path="res://sounds/APPLAUSE1.WAV" id="3_eda35"]
+[ext_resource type="PackedScene" uid="uid://blmjrg1c5g22x" path="res://fish/manta_ray.glb" id="3_lfx8m"]
+[ext_resource type="PackedScene" uid="uid://1mmv1t7kgwc0" path="res://fish/sperm_whale_final.glb" id="4_xuwsu"]
+
+[sub_resource type="Animation" id="Animation_jvpsn"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3d/PathFollow3d/rudd:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path3d/PathFollow3d/rudd:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Path3d/PathFollow3d/rudd:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_mjaqd"]
+resource_name = "fishWiggle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3d/PathFollow3d/rudd:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path3d/PathFollow3d/rudd:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.1, 0.106933, 0.174, -0.104232, -0.021019, 0.1, -0.0219987, 0, -0.1, 0.0780138, 0.0340111, -0.0792183, -0.174, -0.135425, 0.0222806, 0.123352, 0.0242401, 0, -0.0888738, -0.0821576, 0.0863608, 0.076561),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Path3d/PathFollow3d/rudd:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r5btv"]
+_data = {
+"RESET": SubResource("Animation_jvpsn"),
+"fishWiggle": SubResource("Animation_mjaqd")
+}
+
+[sub_resource type="Curve3D" id="Curve3D_cwxww"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -9.655, 6.92, 0, 9.65485, -6.92, -0.353231, 10.777, 4.967, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="FishRigidBody" type="RigidBody3D"]
+collision_layer = 0
+gravity_scale = 0.0
+script = ExtResource("1_gexij")
+
+[node name="FishAnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_r5btv")
+}
+
+[node name="Path3d" type="Path3D" parent="."]
+curve = SubResource("Curve3D_cwxww")
+
+[node name="PathFollow3d" type="PathFollow3D" parent="Path3d"]
+unique_name_in_owner = true
+transform = Transform3D(1.00001, 0, 0, 0, 0.999968, 0, 0, 0, 0.999982, 0, 0, 0)
+rotation_mode = 0
+loop = false
+
+[node name="rudd" parent="Path3d/PathFollow3d" instance=ExtResource("1_eprsn")]
+
+[node name="FishCam" type="Camera3D" parent="Path3d/PathFollow3d"]
+unique_name_in_owner = true
+transform = Transform3D(0.999418, 0, 0.0339591, 0, 1.00003, 0, -0.0339599, 0, 0.999441, 0.0791748, 0, 3.43494)
+
+[node name="manta_ray" parent="Path3d/PathFollow3d" instance=ExtResource("3_lfx8m")]
+
+[node name="sperm_whale_final" parent="Path3d/PathFollow3d" instance=ExtResource("4_xuwsu")]
+
+[node name="FishApplause" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_eda35")
+volume_db = -15.065
+
+[node name="FishTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[connection signal="timeout" from="FishTimer" to="." method="_on_fish_timer_timeout"]
