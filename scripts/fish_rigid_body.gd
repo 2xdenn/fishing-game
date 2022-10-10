@@ -12,6 +12,10 @@ extends RigidBody3D
 @onready var fishType = get_node("%FishTypeDisplay")
 @onready var screen_switch_time = 3.0
 @export var fish: Resource
+@export var black: Color
+@export var red: Color
+@export var green: Color
+
 var fish_size_min
 var fish_size_max
 var size_of_fish = 0
@@ -49,22 +53,28 @@ func pickFish():
 		var f = rudd.instantiate()
 		fishSpawnPoint.add_child(f)
 		f.set_meta("name", "Rudd")
+		fishType.push_color(green)
 		fishName.text = "Rudd"
-		fishType.text = "common"
+		fishType.text = "[wave]common"
+		fishType.pop()
 		return f
 	if(rng_num > 10 && rng_num < 90):
 		var f = manta.instantiate()
 		fishSpawnPoint.add_child(f)
 		f.set_meta("name", "Manta")
+		fishType.push_color(black)
 		fishName.text = "Manta"
-		fishType.text = "uncommon"
+		fishType.text = "[wave][shake]uncommon"
+		fishType.pop()
 		return f
 	if(rng_num > 90 && rng_num < 100):
 		var f = whale.instantiate()
 		fishSpawnPoint.add_child(f)
 		f.set_meta("name", "Whale")
+		fishType.push_color(red)
 		fishName.text = "Whale"
-		fishType.text = "rare"
+		fishType.text = "[wave][rainbow][shake]rare"
+		fishType.pop()
 		return f
 
 func setFishSize(fish):
@@ -87,5 +97,5 @@ func setFishSize(fish):
 	fish.scale.z = rng_size
 	
 	size_of_fish = rng_size
-	fishSize.text = str(snapped(rng_size, 0.01)) + " Meters"
+	fishSize.text = "[shake]" + str(snapped(rng_size, 0.01)) + " Meters"
 	print("FISH SIZE ", rng_size)

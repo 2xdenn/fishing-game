@@ -29,6 +29,9 @@ point_count = 2
 collision_layer = 0
 gravity_scale = 0.0
 script = ExtResource("1_gexij")
+black = Color(0, 0, 0, 1)
+red = Color(1, 0, 0, 1)
+green = Color(0, 1, 0, 1)
 
 [node name="FishAnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -78,6 +81,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/normal_font = ExtResource("3_cy3jm")
 theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
 text = "Name
 "
 fit_content_height = true
@@ -92,7 +96,8 @@ offset_bottom = 216.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/normal_font = ExtResource("3_cy3jm")
-text = "Size"
+bbcode_enabled = true
+text = "[shake]Size"
 fit_content_height = true
 
 [node name="FishTypeDisplay" type="RichTextLabel" parent="FishDisplay"]
@@ -102,10 +107,12 @@ offset_left = 88.0
 offset_top = 48.0
 offset_right = 216.0
 offset_bottom = 72.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 0
-theme_override_fonts/normal_font = ExtResource("3_cy3jm")
-text = "Type"
+theme_override_fonts/italics_font = ExtResource("3_cy3jm")
+bbcode_enabled = true
+text = "[wave]Type"
 fit_content_height = true
 
 [connection signal="timeout" from="FishTimer" to="." method="_on_fish_timer_timeout"]
