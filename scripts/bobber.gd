@@ -69,8 +69,8 @@ func create_timer(time, TimerNode):
 #function to calculate and set bob time to correct random number
 func calculateBobTime():
 	#between these 2 amounts aka. if min = -1 and max = 1 it will always print 0
-	var bob_time_minimum = 5
-	var bob_time_maximum = 15
+	var bob_time_minimum = 2
+	var bob_time_maximum = 8
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	var my_random_number = int(rng.randf_range(bob_time_minimum, bob_time_maximum))

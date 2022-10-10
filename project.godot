@@ -15,10 +15,6 @@ run/main_scene="res://scenes/world.tscn"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")
 config/icon="res://icon.svg"
 
-[autoload]
-
-ImportData="*res://scripts/ImportData.gd"
-
 [display]
 
 window/size/viewport_width=256

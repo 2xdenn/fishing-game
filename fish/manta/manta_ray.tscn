@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb7k7ce4aip6x"]
+
+[ext_resource type="PackedScene" uid="uid://chwx2v7dtq2k7" path="res://fish/manta/manta_ray.glb" id="1_8saao"]
+
+[node name="manta_ray" instance=ExtResource("1_8saao")]
