@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cn0xrgot3tkx7"]
+[gd_scene load_steps=9 format=3 uid="uid://cn0xrgot3tkx7"]
 
 [ext_resource type="Script" path="res://scripts/fish_rigid_body.gd" id="1_gexij"]
 [ext_resource type="FontFile" uid="uid://offrpaolmosn" path="res://fonts/Caoutchouc Regular.ttf" id="3_cy3jm"]
 [ext_resource type="AudioStream" uid="uid://dkcsbjk662kxb" path="res://sounds/APPLAUSE1.WAV" id="3_eda35"]
+[ext_resource type="Script" path="res://scenes/FishDisplay.gd" id="3_i4xap"]
 
 [sub_resource type="Animation" id="Animation_jvpsn"]
 length = 0.001
@@ -29,9 +30,6 @@ point_count = 2
 collision_layer = 0
 gravity_scale = 0.0
 script = ExtResource("1_gexij")
-black = Color(0, 0, 0, 1)
-red = Color(1, 0, 0, 1)
-green = Color(0, 1, 0, 1)
 
 [node name="FishAnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -65,14 +63,15 @@ unique_name_in_owner = true
 one_shot = true
 
 [node name="FishDisplay" type="Control" parent="."]
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
 offset_right = 256.0
 offset_bottom = 256.0
+script = ExtResource("3_i4xap")
 
 [node name="FishNameDisplay" type="RichTextLabel" parent="FishDisplay"]
 unique_name_in_owner = true
-layout_mode = 0
 offset_left = 80.0
 offset_top = 8.0
 offset_right = 280.0
@@ -82,13 +81,13 @@ theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/normal_font = ExtResource("3_cy3jm")
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
-text = "Name
+text = "[wave]Name
 "
 fit_content_height = true
 
 [node name="FishSizeDisplay" type="RichTextLabel" parent="FishDisplay"]
 unique_name_in_owner = true
-layout_mode = 0
+visible = false
 offset_left = 80.0
 offset_top = 192.0
 offset_right = 248.0
@@ -102,7 +101,6 @@ fit_content_height = true
 
 [node name="FishTypeDisplay" type="RichTextLabel" parent="FishDisplay"]
 unique_name_in_owner = true
-layout_mode = 1
 offset_left = 88.0
 offset_top = 48.0
 offset_right = 216.0
@@ -112,7 +110,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/italics_font = ExtResource("3_cy3jm")
 bbcode_enabled = true
-text = "[wave]Type"
+text = "[wave][i][color=green]Type"
 fit_content_height = true
 
 [connection signal="timeout" from="FishTimer" to="." method="_on_fish_timer_timeout"]

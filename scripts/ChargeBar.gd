@@ -15,6 +15,7 @@ func _ready():
 	bar.hide()
 	launchText.hide()
 	ShotTypeText.hide()
+
 	
 func _on_starter_rod_charge(value):
 	bar.value = value
@@ -33,4 +34,5 @@ func _on_charge_timer_timeout():
 		launchText.hide()
 		ShotTypeText.hide()
 	
+
 

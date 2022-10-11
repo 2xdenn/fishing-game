@@ -7,14 +7,12 @@ extends RigidBody3D
 @onready var fishSpawnPoint = get_node("%FishSpawnPoint")
 @onready var fCam = get_node("%FishCam")
 @onready var fishTimer = get_node("%FishTimer")
-@onready var fishName = get_node("%FishNameDisplay")
+@onready var fishDisplay = get_node("%FishDisplay")
 @onready var fishSize = get_node("%FishSizeDisplay")
-@onready var fishType = get_node("%FishTypeDisplay")
 @onready var screen_switch_time = 3.0
-@export var fish: Resource
-@export var black: Color
-@export var red: Color
-@export var green: Color
+@onready var fishID = "Empty"
+@onready var player = get_node("/root/World/Player")
+@onready var catchFinishedPlaying = false
 
 var fish_size_min
 var fish_size_max
@@ -30,51 +28,58 @@ func _ready():
 	#fishes size
 	fCam.current = true
 	fCam.translate(Vector3(0,0,size_of_fish - 3))
-	#need to freeze player here
+	player.freezePlayer()
 	get_node("%FishAnimationPlayer").play("fishWiggle")
 	fishTimer.set_wait_time(screen_switch_time)
 	fishTimer.start()
-
 # fish follows the path
 func _process(delta):
 	if(launch):
 		pathFollow.progress_ratio += delta  * 0.4
+	
+	if Input.is_action_just_pressed("right_click") && catchFinishedPlaying:
+		player.unfreezePlayer()
+		queue_free()
+	
 
 #deletes fish after screen_switch_time seconds
 func _on_fish_timer_timeout():
-	queue_free()
+	catchFinishedPlaying = true
+	#queue_free()
+	if(fishID == "Rudd"):
+		fishDisplay.rudd()
+	if(fishID == "Manta"):
+		fishDisplay.manta()
+	if(fishID == "Whale"):
+		fishDisplay.whale()
+
 	
 func pickFish():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	var rng_num = int(rng.randf_range(0, 100))
 	print("FISH PICK NUMBER: " , rng_num)
+	
+	#rudd
 	if(rng_num > 0 && rng_num < 70):
 		var f = rudd.instantiate()
 		fishSpawnPoint.add_child(f)
 		f.set_meta("name", "Rudd")
-		fishType.push_color(green)
-		fishName.text = "Rudd"
-		fishType.text = "[wave]common"
-		fishType.pop()
+		fishID = "Rudd"
 		return f
+	#manta
 	if(rng_num > 10 && rng_num < 90):
 		var f = manta.instantiate()
 		fishSpawnPoint.add_child(f)
 		f.set_meta("name", "Manta")
-		fishType.push_color(black)
-		fishName.text = "Manta"
-		fishType.text = "[wave][shake]uncommon"
-		fishType.pop()
+		fishID = "Manta"
 		return f
+	#whale
 	if(rng_num > 90 && rng_num < 100):
 		var f = whale.instantiate()
 		fishSpawnPoint.add_child(f)
 		f.set_meta("name", "Whale")
-		fishType.push_color(red)
-		fishName.text = "Whale"
-		fishType.text = "[wave][rainbow][shake]rare"
-		fishType.pop()
+		fishID = "Whale"
 		return f
 
 func setFishSize(fish):

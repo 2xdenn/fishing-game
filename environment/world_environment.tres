@@ -1,0 +1,26 @@
+[gd_resource type="Environment" load_steps=5 format=3 uid="uid://desnnffsbnchx"]
+
+[sub_resource type="Gradient" id="Gradient_h1fr8"]
+colors = PackedColorArray(0.702319, 0.462159, 0.56263, 1, 1, 0.822983, 0.666941, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pvab4"]
+gradient = SubResource("Gradient_h1fr8")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5kbw5"]
+panorama = SubResource("GradientTexture2D_pvab4")
+
+[sub_resource type="Sky" id="Sky_egwhn"]
+sky_material = SubResource("PanoramaSkyMaterial_5kbw5")
+
+[resource]
+background_mode = 2
+background_color = Color(0.686275, 0.454902, 0.737255, 1)
+sky = SubResource("Sky_egwhn")
+sdfgi_use_occlusion = true
+volumetric_fog_density = 0.0501
+volumetric_fog_detail_spread = 6.0
+adjustment_enabled = true
+adjustment_brightness = 1.09
+adjustment_contrast = 1.18
+adjustment_saturation = 1.13
