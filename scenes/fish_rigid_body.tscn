@@ -49,7 +49,7 @@ loop = false
 
 [node name="FishCam" type="Camera3D" parent="Path3d/PathFollow3d"]
 unique_name_in_owner = true
-transform = Transform3D(0.999413, -3.18681e-07, 0.0339587, -0.010985, 0.946267, 0.323299, -0.032134, -0.323481, 0.945708, 0.0791748, 1.22497, 3.43494)
+transform = Transform3D(0.99999, 0, 0, 0, 0.946114, 0.323924, 0, -0.323927, 0.946104, 0.0791748, 1.22497, 3.43494)
 
 [node name="FishSpawnPoint" type="Node3D" parent="Path3d/PathFollow3d"]
 unique_name_in_owner = true
@@ -72,14 +72,15 @@ script = ExtResource("3_i4xap")
 
 [node name="FishNameDisplay" type="RichTextLabel" parent="FishDisplay"]
 unique_name_in_owner = true
-offset_left = 80.0
-offset_top = 8.0
-offset_right = 280.0
-offset_bottom = 208.0
+layout_mode = 0
+offset_left = 112.0
+offset_top = 228.0
+offset_right = 208.0
+offset_bottom = 244.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/normal_font = ExtResource("3_cy3jm")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/normal_font_size = 10
 bbcode_enabled = true
 text = "[wave]Name
 "
@@ -88,9 +89,10 @@ fit_content_height = true
 [node name="FishSizeDisplay" type="RichTextLabel" parent="FishDisplay"]
 unique_name_in_owner = true
 visible = false
-offset_left = 80.0
+layout_mode = 0
+offset_left = 85.0
 offset_top = 192.0
-offset_right = 248.0
+offset_right = 221.0
 offset_bottom = 216.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 0
@@ -101,14 +103,16 @@ fit_content_height = true
 
 [node name="FishTypeDisplay" type="RichTextLabel" parent="FishDisplay"]
 unique_name_in_owner = true
-offset_left = 88.0
-offset_top = 48.0
-offset_right = 216.0
-offset_bottom = 72.0
+layout_mode = 0
+offset_left = 80.0
+offset_top = 16.0
+offset_right = 256.0
+offset_bottom = 40.0
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/italics_font = ExtResource("3_cy3jm")
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "[wave][i][color=green]Type"
 fit_content_height = true

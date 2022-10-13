@@ -18,6 +18,7 @@ var b = null
 var bobberCount = 0
 @onready var wrld = get_tree().get_root().get_node("World")
 var pos = Vector3(-5,10,0)
+@onready var canCast = true
 
 func launch_bobber(b):
 	pos = lp.global_position
@@ -27,7 +28,7 @@ func launch_bobber(b):
 
 func _input(event):
 	#if left click is pressed play the pull animation and set chargebar to true
-	if Input.is_action_just_pressed("left_click"):
+	if Input.is_action_just_pressed("left_click") && canCast:
 		get_node("%AnimationPlayer").play("pull")
 		#get_node("%CameraAnimationPlayer").play("camera_pull")
 		chargeBar = true
@@ -38,7 +39,7 @@ func _input(event):
 			b.queue_free()
 			bobberCount = 0
 	#if left click is released play the cast animation
-	if event.is_action_released("left_click"):
+	if event.is_action_released("left_click") && canCast:
 		get_node("%AnimationPlayer").play("cast")
 		#get_node("%CameraAnimationPlayer").play("camera_cast")
 		$ChargeUpSound.stop()
@@ -99,7 +100,14 @@ func shot_type_text():
 		get_node("%UIAnimationPlayer").play("Text_Grow")
 		
 
+#This is where screen fade is 
 func displayCatchText():
 		get_node("%CatchAnimationPlayer").play("catch")
 		b.hideMesh()
 		get_node("%UIAnimationPlayer").play("ScreenFade")
+
+func freezeCasting():
+	canCast = false
+
+func unfreezeCasting():
+	canCast = true

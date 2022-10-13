@@ -12,39 +12,62 @@ extends RigidBody3D
 @onready var screen_switch_time = 3.0
 @onready var fishID = "Empty"
 @onready var player = get_node("/root/World/Player")
+@onready var rod = get_node("/root/World/Player/Neck/starter_rod")
+@onready var playerCam = get_node("/root/World/Player/Neck/Camera")
+@onready var postCatchCam = get_node("/root/World/Player/PostCatchCam")
+@onready var postCatchCamSpawnPoint = get_node("/root/World/Player/PostCatchCam/PostCatchSpawnPoint")
 @onready var catchFinishedPlaying = false
+@onready var f = null
 
 var fish_size_min
 var fish_size_max
-var size_of_fish = 0
+@onready var size_of_fish = 0
 
 var launch = false
+
+func _input(event):
+	if(Input.is_action_just_pressed("right_click") || Input.is_action_just_pressed("left_click")) && catchFinishedPlaying:
+		queue_free()
+		player.unfreezePlayer()
+		playerCam.current = true
+		rod.unfreezeCasting()
+		print("skip")
 
 #currently instanced in bobber.gd physics process function
 func _ready():
 	$FishApplause.play()
+	
 	setFishSize(pickFish())
 	#sets camera to fishCam and moves it to appropriate position relative to the 
 	#fishes size
 	fCam.current = true
 	fCam.translate(Vector3(0,0,size_of_fish - 3))
 	player.freezePlayer()
+	rod.freezeCasting()
 	get_node("%FishAnimationPlayer").play("fishWiggle")
 	fishTimer.set_wait_time(screen_switch_time)
 	fishTimer.start()
+
 # fish follows the path
 func _process(delta):
 	if(launch):
 		pathFollow.progress_ratio += delta  * 0.4
-	
-	if Input.is_action_just_pressed("right_click") && catchFinishedPlaying:
-		player.unfreezePlayer()
-		queue_free()
-	
 
 #deletes fish after screen_switch_time seconds
+#this is where the post catch scene starts
 func _on_fish_timer_timeout():
 	catchFinishedPlaying = true
+	postCatchCam.current = true
+	#postCatchCam.translate(Vector3(0,0,size_of_fish - (size_of_fish * 0.6)))
+	#postCatchCam.translate(Vector3(0,0,1))
+	print(size_of_fish)
+	#change position of f to the olcoation of postCatchCamSpawnPoint
+	f.global_position = postCatchCamSpawnPoint.global_position
+	f.global_rotation = postCatchCamSpawnPoint.global_rotation
+	#f.rotation = Vector3.UP
+	#f.set_global_rotation(Vector3.UP)
+	#f.rotate_z(90)
+	#look_at(hook.global_transform.origin, Vector3.UP)
 	#queue_free()
 	if(fishID == "Rudd"):
 		fishDisplay.rudd()
@@ -53,8 +76,8 @@ func _on_fish_timer_timeout():
 	if(fishID == "Whale"):
 		fishDisplay.whale()
 
-	
 func pickFish():
+	
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	var rng_num = int(rng.randf_range(0, 100))
@@ -62,21 +85,21 @@ func pickFish():
 	
 	#rudd
 	if(rng_num > 0 && rng_num < 70):
-		var f = rudd.instantiate()
+		f = rudd.instantiate()
 		fishSpawnPoint.add_child(f)
 		f.set_meta("name", "Rudd")
 		fishID = "Rudd"
 		return f
 	#manta
 	if(rng_num > 10 && rng_num < 90):
-		var f = manta.instantiate()
+		f = manta.instantiate()
 		fishSpawnPoint.add_child(f)
 		f.set_meta("name", "Manta")
 		fishID = "Manta"
 		return f
 	#whale
 	if(rng_num > 90 && rng_num < 100):
-		var f = whale.instantiate()
+		f = whale.instantiate()
 		fishSpawnPoint.add_child(f)
 		f.set_meta("name", "Whale")
 		fishID = "Whale"
