@@ -1,3 +1,7 @@
-[gd_scene format=3 uid="uid://drs77i734xdr1"]
+[gd_scene load_steps=2 format=3 uid="uid://drs77i734xdr1"]
 
-[node name="PostCatchScene" type="Node3D"]
+[ext_resource type="Script" path="res://scenes/PickFish.gd" id="1_4krbr"]
+
+[node name="PickFish" type="Node"]
+script = ExtResource("1_4krbr")
+luck = 50

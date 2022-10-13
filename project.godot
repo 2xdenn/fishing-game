@@ -8,6 +8,16 @@
 
 config_version=5
 
+_global_script_classes=[{
+"base": "Resource",
+"class": &"FishStats",
+"language": &"GDScript",
+"path": "res://fish/fish_resource.gd"
+}]
+_global_script_class_icons={
+"FishStats": ""
+}
+
 [application]
 
 config/name="Godot 4.0 Testing Project"

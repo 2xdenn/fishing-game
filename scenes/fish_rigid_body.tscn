@@ -72,7 +72,6 @@ script = ExtResource("3_i4xap")
 
 [node name="FishNameDisplay" type="RichTextLabel" parent="FishDisplay"]
 unique_name_in_owner = true
-layout_mode = 0
 offset_left = 112.0
 offset_top = 228.0
 offset_right = 208.0
@@ -89,7 +88,6 @@ fit_content_height = true
 [node name="FishSizeDisplay" type="RichTextLabel" parent="FishDisplay"]
 unique_name_in_owner = true
 visible = false
-layout_mode = 0
 offset_left = 85.0
 offset_top = 192.0
 offset_right = 221.0
@@ -103,7 +101,6 @@ fit_content_height = true
 
 [node name="FishTypeDisplay" type="RichTextLabel" parent="FishDisplay"]
 unique_name_in_owner = true
-layout_mode = 0
 offset_left = 80.0
 offset_top = 16.0
 offset_right = 256.0
