@@ -1,0 +1,32 @@
+{
+  "1": {
+	"FishName": "Rudd",
+	"FishScaleMin": 1.5,
+	"FishScaleMax": 2.5,
+	"RarityTag": "Common"
+  },
+  "2": {
+	"FishName": "Whale",
+	"FishScaleMin": 10,
+	"FishScaleMax": 20,
+	"RarityTag": "Rare"
+  },
+  "3": {
+	"FishName": "Ray",
+	"FishScaleMin": 5,
+	"FishScaleMax": 8,
+	"RarityTag": "Uncommon"
+  },
+  "4": {
+	"FishName": "Red Snapper",
+	"FishScaleMin": 2,
+	"FishScaleMax": 3.5,
+	"RarityTag": "Common"
+  },
+  "5": {
+	"FishName": "Angler",
+	"FishScaleMin": 4,
+	"FishScaleMax": 7,
+	"RarityTag": "Uncommon"
+  }
+}

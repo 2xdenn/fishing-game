@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c5ni4pgjn0n5c"]
+
+[ext_resource type="Script" path="res://fish/fish_resource.gd" id="1_2o1ti"]
+[ext_resource type="PackedScene" uid="uid://2c4w8cduipw7" path="res://fish/red_snapper/red_snapper.glb" id="1_hqxsn"]
+
+[resource]
+script = ExtResource("1_2o1ti")
+fish_name = "Red Snapper"
+fish_node = ExtResource("1_hqxsn")
+metadata/_editor_prop_ptr_fish_mesh = NodePath("")

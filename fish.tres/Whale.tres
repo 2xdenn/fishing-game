@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bsqmfe6vue2pm"]
+
+[ext_resource type="Script" path="res://fish/fish_resource.gd" id="1_4wmfb"]
+[ext_resource type="PackedScene" uid="uid://b7himkxx13iu7" path="res://fish/whale/sperm_whale_final.glb" id="1_ar36b"]
+
+[resource]
+script = ExtResource("1_4wmfb")
+fish_name = "Whale"
+fish_node = ExtResource("1_ar36b")

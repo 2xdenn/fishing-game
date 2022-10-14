@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bedq5e0ngqjh6"]
+
+[ext_resource type="Script" path="res://fish/fish_resource.gd" id="1_2o1ti"]
+[ext_resource type="PackedScene" uid="uid://chwx2v7dtq2k7" path="res://fish/manta/manta_ray.glb" id="1_pcl51"]
+
+[resource]
+script = ExtResource("1_2o1ti")
+fish_name = "Ray"
+fish_node = ExtResource("1_pcl51")
+metadata/_editor_prop_ptr_fish_mesh = NodePath("")

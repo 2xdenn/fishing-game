@@ -4,4 +4,9 @@
 
 [node name="PickFish" type="Node"]
 script = ExtResource("1_4krbr")
-luck = 50
+
+[node name="Camera3d" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.919569)
+
+[node name="FishSpawn" type="Node3D" parent="."]
+unique_name_in_owner = true
