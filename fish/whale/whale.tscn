@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3]
-
-[ext_resource type="PackedScene" path="res://fish/whale/sperm_whale_final.glb" id="1_yr2pi"]
-
-[node name="sperm_whale_final" instance=ExtResource("1_yr2pi")]

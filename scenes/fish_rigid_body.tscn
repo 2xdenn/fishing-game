@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cn0xrgot3tkx7"]
+[gd_scene load_steps=9 format=3 uid="uid://c5alhxikta5qv"]
 
-[ext_resource type="Script" path="res://scripts/fish_rigid_body.gd" id="1_gexij"]
+[ext_resource type="Script" path="res://scripts/old scripts/fish_rigid_body.gd" id="1_njcf1"]
 [ext_resource type="FontFile" uid="uid://offrpaolmosn" path="res://fonts/Caoutchouc Regular.ttf" id="3_cy3jm"]
 [ext_resource type="AudioStream" uid="uid://dkcsbjk662kxb" path="res://sounds/APPLAUSE1.WAV" id="3_eda35"]
-[ext_resource type="Script" path="res://scenes/FishDisplay.gd" id="3_i4xap"]
+[ext_resource type="Script" path="res://scripts/FishDisplay.gd" id="3_rykv1"]
 
 [sub_resource type="Animation" id="Animation_jvpsn"]
 length = 0.001
@@ -29,7 +29,7 @@ point_count = 2
 [node name="FishRigidBody" type="RigidBody3D"]
 collision_layer = 0
 gravity_scale = 0.0
-script = ExtResource("1_gexij")
+script = ExtResource("1_njcf1")
 
 [node name="FishAnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -68,7 +68,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 256.0
 offset_bottom = 256.0
-script = ExtResource("3_i4xap")
+script = ExtResource("3_rykv1")
 
 [node name="FishNameDisplay" type="RichTextLabel" parent="FishDisplay"]
 unique_name_in_owner = true

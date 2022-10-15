@@ -10,7 +10,7 @@ var bob_time = 0
 @onready var bobberMesh = get_node("%starter_bobber")
 @onready var lp = get_node("/root/World/Player/Neck/starter_rod/LaunchPoint")
 @onready var starterRod = get_node("/root/World/Player/Neck/starter_rod")
-@onready var fish = preload("res://scenes/fish_rigid_body.tscn")
+#@onready var fish = preload("res://scenes/fish_rigid_body.tscn")
 @onready var waterFoam = get_node("%Water_foam")
 @onready var waterMist = get_node("%Water_mist")
 @onready var splash = get_node("%WaterSplashEmitter")
@@ -31,10 +31,10 @@ func _physics_process(delta):
 		print("catch!")
 		caughtFish = true
 		$CatchSound.play()
-		f = fish.instantiate()
-		add_child(f)
-		f.launch = true
-		starterRod.displayCatchText()
+		#f = fish.instantiate()
+		#add_child(f)
+		#f.launch = true
+		#starterRod.displayCatchText()
 		canClick = false
 
 
