@@ -1,6 +1,6 @@
 extends Control
 
-@onready var chargeMeter = $RodChargeMeter
+@onready var chargeMeter = $ChargeBar
 @onready var chargeBar = false
 @onready var chargeLevel = 0
 @onready var goingDown = false
@@ -41,6 +41,12 @@ func _on_fishing_rod_charge_bar(boolean):
 		chargeLevel = 0
 		goingDown = false
 	else:
+		# checks after player releases what type of cast it is
+		if(chargeLevel > targetCeil && chargeLevel < targetFloor):
+			print("perfect catch")
+			get_node("%RodUIAnimations").play("perfect_cast_text")
+		else:
+			print("not quite")
 		freezeTimer.start()
 
 #after the freeze timer
