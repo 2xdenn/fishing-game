@@ -12,7 +12,6 @@ extends Node
 @onready var fish_id : int
 
 @onready var fishSpawnPoint = get_node("%FishSpawn")
-@onready var camera = get_node("%FishCam")
 
 @onready var fishNode : Node3D
 @onready var fishData : Dictionary
@@ -21,35 +20,33 @@ extends Node
 
 func LoadFishData(FilePath):
 	
-	var DataFile = File.new()
-	DataFile.open(FilePath, File.READ)
+	var DataFile = FileAccess.open(FilePath, FileAccess.READ)
 	var DataJSon = JSON.new()
 	DataJSon = DataJSon.parse_string(DataFile.get_as_text())
-	DataFile.close()
+	
 	return DataJSon
 
-func _ready():
+func fishCall():
 	
-	fishData = LoadFishData("res://json/FishTable - Sheet1.json")
 	setFish(pickFish())
 	createFish()
-	#setFishSize(fishNode)
-	print(rng_size)
-	#camera.translate(Vector3(0,0,rng_size * 0.6))
-	
-	
+	setFishSize(fishNode)
+	print("size is: " + str(rng_size))
 	print("Fish Name: " + fish_name)
 	print("Fish Rarity: " + rarity)
 	print("Fish Min: " + str(fish_min))
 	print("Fish Max: " + str(fish_max))
 	print("Fish ID: " + str(fish_id))
 
+func _ready():
+	
+	fishData = LoadFishData("res://json/FishTable - Sheet1.json")
+
 #creates the fish given the parameters with a node3d and gives it a mesh
 func createFish():
 
 	var fish_resource = load("res://fish.tres/" + fish_name + ".tres")
 	print(fish_resource.getName())
-	#print(fish_resource.getNode())
 	fishNode = fish_resource.getNode().instantiate()
 	fishSpawnPoint.add_child(fishNode)
 
@@ -100,18 +97,15 @@ func setFish(index : int):
 
 #has to set a random fish size between the fishes min size and max size
 #has to read in this data from the fish type
-func setFishSize(fishNode):
+func setFishSize(fishNode3D):
 	
-#	var fish_size_min = fishData[str(fishName)]["FishScaleMin"]
-#	var fish_size_max = fishData[str(fishName)]["FishScaleMax"]
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	rng_size = rng.randf_range(fish_min, fish_max)
 	
-	fishNode.scale.x = rng_size
-	fishNode.scale.y = rng_size
-	fishNode.scale.z = rng_size
-	
+	fishNode3D.scale.x = rng_size
+	fishNode3D.scale.y = rng_size
+	fishNode3D.scale.z = rng_size
 
 #has to return the size of the fish after it has been set in setFishSize 
 func getFishSize():
@@ -119,3 +113,6 @@ func getFishSize():
 
 func getFishRarity():
 	return rarity
+
+func deleteFish():
+	fishSpawnPoint.remove_child(fishNode)

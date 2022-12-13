@@ -2,7 +2,7 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-uid="uid://cmrdd1xogxpdc"
+uid="uid://cndnn6ssbodob"
 path="res://.godot/imported/custom charge down.mp3-ce18c134831aef37fc68e189d47bb5dd.mp3str"
 
 [deps]
@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/custom charge down.mp3-ce18c134831aef37fc68e1
 [params]
 
 loop=true
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4
