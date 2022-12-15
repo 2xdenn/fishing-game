@@ -2,6 +2,7 @@ extends Node3D
 
 signal chargeBar(boolean)
 signal showBar(boolean)
+@onready var pow = 0
 
 @onready var expBar = get_node("/root/UnderwaterTestWorld/Player/ExperienceBar")
 
@@ -36,12 +37,14 @@ func launchBobber(b):
 	bp.global_transform.origin = pos
 	bp.add_child(b)
 	b.shoot = true 
+	b.power = pow
 
 func _input(event):
 	if freezeCast == false:
 		
 		# pull fishing rod back
 		if Input.is_action_just_pressed("left_click") && canCast:
+		
 			emit_signal("chargeBar", true)
 			emit_signal("showBar", true)
 			animatePull()
@@ -108,16 +111,21 @@ func _physics_process(_delta):
 		canClick = false
 		canResetPlayer = true
 		
+		# spawn fish from PickFish function
+		pickFish.fishCall()
+		
 			
 		# gain an amount of exp based on the fish you catch
-		expBar.gain_exp(1)
-
+		if(pickFish.getFishRarity() == "Common"):
+			expBar.gain_exp(1)
+		if(pickFish.getFishRarity() == "Uncommon"):
+			expBar.gain_exp(3)
+		if(pickFish.getFishRarity() == "Rare"):
+			expBar.gain_exp(5)
 		
 		animateIdle()
 		bambooRod.hide()
 		
-		# spawn fish from PickFish function
-		pickFish.fishCall()
 		# calls FishInfo control node to update the text to the correct fish information
 		fishInfo.displayFishInfo()
 		freezeCast = true
@@ -135,3 +143,8 @@ func animateBobberReelIn():
 	# b is the bobber instance in the scene
 	var tween = create_tween()
 	tween.tween_property(b, "position", Vector3(0, 0, 0), 0)
+
+# gets the power level of the cast from the rod control method
+func _on_rod_control_bar_power(integer):
+	print(str(integer))
+	pow = integer

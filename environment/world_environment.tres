@@ -1,17 +1,11 @@
-[gd_resource type="Environment" load_steps=4 format=3 uid="uid://desnnffsbnchx"]
+[gd_resource type="Environment" load_steps=2 format=3 uid="uid://desnnffsbnchx"]
 
-[ext_resource type="Texture2D" uid="uid://km4ymqg7lpq5" path="res://assets/skyboxes/yPcEMDN.png" id="1_fdbng"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_34vst"]
-panorama = ExtResource("1_fdbng")
-
-[sub_resource type="Sky" id="Sky_l441q"]
-sky_material = SubResource("PanoramaSkyMaterial_34vst")
+[sub_resource type="Sky" id="Sky_1tccy"]
 
 [resource]
-background_mode = 2
-background_color = Color(0.686275, 0.454902, 0.737255, 1)
-sky = SubResource("Sky_l441q")
+background_mode = 1
+background_color = Color(0.917647, 0.678431, 1, 1)
+sky = SubResource("Sky_1tccy")
 sdfgi_use_occlusion = true
 volumetric_fog_density = 0.0501
 volumetric_fog_detail_spread = 6.0

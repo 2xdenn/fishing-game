@@ -5,7 +5,7 @@ extends RigidBody3D
 @onready var splash = get_node("%WaterSplashEmitter")
 
 var inputVel = 0
-var power = 30
+var power = 0
 @export var speed : float
 var shoot = false
 var canClick = false
@@ -35,6 +35,7 @@ func calculateBobTime():
 
 #shooting bobber physics
 func shootBob(delta):
+	
 	
 	inputVel = lp.global_transform.basis.z.normalized()
 	apply_impulse(inputVel * power * speed * delta)

@@ -1,5 +1,7 @@
 extends Control
 
+signal barPower(integer)
+
 @onready var chargeMeter = $ChargeBar
 @onready var chargeBar = false
 @onready var chargeLevel = 0
@@ -41,6 +43,8 @@ func _on_fishing_rod_charge_bar(boolean):
 		chargeLevel = 0
 		goingDown = false
 	else:
+		# sends signal to fishing rod to launch the bobber the correct distance
+		emit_signal("barPower", chargeLevel)
 		# checks after player releases what type of cast it is
 		if(chargeLevel > targetFloor && chargeLevel < targetCeil):
 			print("perfect catch")

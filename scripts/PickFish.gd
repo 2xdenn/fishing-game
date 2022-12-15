@@ -60,7 +60,7 @@ func pickFish():
 	print("FISH PICK NUMBER: " , rng_num)
 	
 	#common
-	if(rng_num > 0 && rng_num < 70):
+	if(rng_num > 0 && rng_num <= 70):
 		#creates an array with the index's of all the common fish and selects
 		#one of them at random, returning a string with its name
 		var commonFish : Array
@@ -71,7 +71,7 @@ func pickFish():
 		#returns a random common fish index
 		return commonFish[randi() % commonFish.size()]
 	#uncommon
-	if(rng_num > 70 && rng_num < 90):
+	if(rng_num > 70 && rng_num <= 90):
 		var uncommonFish : Array
 		for i in fishData.size():
 			i += 1
@@ -79,7 +79,7 @@ func pickFish():
 				uncommonFish += [i]
 		return uncommonFish[randi() % uncommonFish.size()]
 	#rare
-	if(rng_num > 90 && rng_num < 100):
+	if(rng_num > 90 && rng_num <= 100):
 		var rareFish : Array
 		for i in fishData.size():
 			i += 1
@@ -111,7 +111,7 @@ func setFishSize(fishNode3D):
 func getFishSize():
 	return rng_size
 
-func getfishRarity():
+func getFishRarity():
 	return rarity
 
 func deleteFish():
