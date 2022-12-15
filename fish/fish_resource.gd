@@ -1,6 +1,8 @@
 extends Resource
 class_name FishStats
 
+# Used in pickFish for createFish() function
+
 @export var fish_name : String
 @export var fish_node : PackedScene
 #@export var fish_rarity : String  
