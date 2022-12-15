@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dgnn0nr7qamra"
+path="res://.godot/imported/Y2Mate.is - mafia city level up sound effect-aCgSPhK0lfg-48k-1654656982745.mp3-237ca841a8e1b6991c86e3c10d611303.mp3str"
+
+[deps]
+
+source_file="res://sounds/Y2Mate.is - mafia city level up sound effect-aCgSPhK0lfg-48k-1654656982745.mp3"
+dest_files=["res://.godot/imported/Y2Mate.is - mafia city level up sound effect-aCgSPhK0lfg-48k-1654656982745.mp3-237ca841a8e1b6991c86e3c10d611303.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

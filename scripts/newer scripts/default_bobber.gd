@@ -52,11 +52,17 @@ func _physics_process(delta):
 # checks if bobber area touches anything, freezes if it does
 func _on_bobber_area_body_entered(body):
 	
+	# stops the shooting function in physics_process()
 	shoot = false
+	
 	# activates if bobber touches an object in the "Water" group
 	if body.is_in_group("Water"):
+		# sends a signal to the fishing rod script to generate the fish
+		
+		
 		catchTimer.set_wait_time(calculateBobTime())
 		catchTimer.start()
+		# activate effects for when the bobber lands in water
 		$SplashSound.play()
 		makeFoam()
 		makeSplash()
@@ -64,6 +70,7 @@ func _on_bobber_area_body_entered(body):
 		bobLanding()
 	# activates if bobber touches anything else
 	else:
+		# add effects for when it lands on different things i.e trees, grass, NPC's
 		print("not in water")
 
 # activates when a fish bites

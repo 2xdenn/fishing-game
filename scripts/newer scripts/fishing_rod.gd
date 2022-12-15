@@ -89,13 +89,14 @@ func _input(event):
 		# after catching the fish player can right click to return to an idle state
 		if canResetPlayer && Input.is_action_just_pressed("right_click"):
 			pickFish.deleteFish()
+			fishInfo.resetText()
 			#reset FishingRod
 			print("reset")
 			canResetPlayer = false
 			freezeCast = false
 			canCast = true
 			
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	# activates if you succesfully catch a fish. canClick gets activated in 
 	# default_bobber function
@@ -107,18 +108,18 @@ func _physics_process(delta):
 		canClick = false
 		canResetPlayer = true
 		
-		if(caughtFish):
 			
-			# gain an amount of exp based on the fish you catch
-			expBar.gain_exp(50)
+		# gain an amount of exp based on the fish you catch
+		expBar.gain_exp(1)
 
-			caughtFish = false
 		
 		animateIdle()
 		bambooRod.hide()
 		
 		# spawn fish from PickFish function
 		pickFish.fishCall()
+		# calls FishInfo control node to update the text to the correct fish information
+		fishInfo.displayFishInfo()
 		freezeCast = true
 
 func animatePull():

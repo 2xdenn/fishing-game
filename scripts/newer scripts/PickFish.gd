@@ -31,12 +31,12 @@ func fishCall():
 	setFish(pickFish())
 	createFish()
 	setFishSize(fishNode)
-	print("size is: " + str(rng_size))
-	print("Fish Name: " + fish_name)
-	print("Fish Rarity: " + rarity)
-	print("Fish Min: " + str(fish_min))
-	print("Fish Max: " + str(fish_max))
-	print("Fish ID: " + str(fish_id))
+#	print("size is: " + str(rng_size))
+#	print("Fish Name: " + fish_name)
+#	print("Fish Rarity: " + rarity)
+#	print("Fish Min: " + str(fish_min))
+#	print("Fish Max: " + str(fish_max))
+#	print("Fish ID: " + str(fish_id))
 
 func _ready():
 	
