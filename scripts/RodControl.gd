@@ -16,7 +16,7 @@ signal barPower(integer)
 func _ready():
 	chargeMeter.hide()
 
-func _process(delta):
+func _process(_delta):
 
 	chargeMeter.value = chargeLevel
 	

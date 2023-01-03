@@ -113,5 +113,5 @@ func bobIdle():
 	get_node("%BobberPlayer").play("BobIdle")
 
 # Idle animation play after bobber water landing animation
-func _on_bobber_player_animation_finished(BobWaterLanding):
+func _on_bobber_player_animation_finished(_BobWaterLanding):
 	bobIdle()

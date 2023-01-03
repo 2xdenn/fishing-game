@@ -16,9 +16,9 @@ func _ready():
 	bar.value = experience
 
 # takes a point from a graph and rounds it to give you however much exp is required for the next level
-func get_required_exp(level):
+func get_required_exp(lvl):
 
-	return round(pow(level, 1.8) + level * 4)
+	return round(pow(lvl, 1.8) + lvl * 4)
 
 # activate this function when you want the player to gain exp
 func gain_exp(amount):

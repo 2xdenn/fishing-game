@@ -1,7 +1,7 @@
 @tool
 extends Control
 
-@onready var mainGame = preload("res://scenes/new scenes/underwater_test_world.tscn").instantiate()
+@onready var mainGame = preload("res://scenes/underwater_test_world.tscn").instantiate()
 @onready var start = get_node("%StartButton")
 @onready var options = get_node("%OptionsButton")
 @onready var quit = get_node("%QuitButton")

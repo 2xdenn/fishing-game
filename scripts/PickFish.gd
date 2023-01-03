@@ -22,7 +22,7 @@ func LoadFishData(FilePath):
 	
 	var DataFile = FileAccess.open(FilePath, FileAccess.READ)
 	var DataJSon = JSON.new()
-	DataJSon = DataJSon.parse_string(DataFile.get_as_text())
+	DataJSon = JSON.parse_string(DataFile.get_as_text())
 	
 	return DataJSon
 
@@ -63,7 +63,7 @@ func pickFish():
 	if(rng_num > 0 && rng_num <= 70):
 		#creates an array with the index's of all the common fish and selects
 		#one of them at random, returning a string with its name
-		var commonFish : Array
+		var commonFish : Array = []
 		for i in fishData.size():
 			i += 1
 			if(fishData[str(i)]["RarityTag"] == "Common"):
@@ -72,7 +72,7 @@ func pickFish():
 		return commonFish[randi() % commonFish.size()]
 	#uncommon
 	if(rng_num > 70 && rng_num <= 90):
-		var uncommonFish : Array
+		var uncommonFish : Array = []
 		for i in fishData.size():
 			i += 1
 			if(fishData[str(i)]["RarityTag"] == "Uncommon"):
@@ -80,7 +80,7 @@ func pickFish():
 		return uncommonFish[randi() % uncommonFish.size()]
 	#rare
 	if(rng_num > 90 && rng_num <= 100):
-		var rareFish : Array
+		var rareFish : Array = []
 		for i in fishData.size():
 			i += 1
 			if(fishData[str(i)]["RarityTag"] == "Rare"):

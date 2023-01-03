@@ -2,7 +2,7 @@ extends Node3D
 
 signal chargeBar(boolean)
 signal showBar(boolean)
-@onready var pow = 0
+@onready var power_level = 0
 
 @onready var expBar = get_node("/root/UnderwaterTestWorld/Player/ExperienceBar")
 
@@ -32,12 +32,12 @@ var canResetPlayer = false
 @onready var waitingForBite = false
 var pos = 0
 
-func launchBobber(b):
+func launchBobber(Bob):
 	pos = lp.global_position
 	bp.global_transform.origin = pos
 	bp.add_child(b)
-	b.shoot = true 
-	b.power = pow
+	Bob.shoot = true 
+	Bob.power = power_level
 
 func _input(event):
 	if freezeCast == false:
@@ -147,4 +147,4 @@ func animateBobberReelIn():
 # gets the power level of the cast from the rod control method
 func _on_rod_control_bar_power(integer):
 	print(str(integer))
-	pow = integer
+	power_level = integer
