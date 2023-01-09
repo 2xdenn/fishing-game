@@ -1,6 +1,6 @@
-[gd_scene load_steps=34 format=3 uid="uid://re42devfvmoi"]
+[gd_scene load_steps=34 format=3]
 
-[ext_resource type="Script" path="res://scripts/default_bobber.gd" id="1_drlfy"]
+[ext_resource type="Script" path="res://scripts/fishing_rod/default_bobber.gd" id="1_drlfy"]
 [ext_resource type="Texture2D" uid="uid://dxf7v6aff658r" path="res://water/exclamation_point.png" id="2_jd6n2"]
 [ext_resource type="AudioStream" uid="uid://bj8uphrkd1kpe" path="res://sounds/Stardew Valley： Fish Bite! Sound Effect.mp3" id="3_kox2c"]
 [ext_resource type="Texture2D" uid="uid://ciiaes1sjum8q" path="res://water/water_splash_low_res.png" id="4_lt12v"]

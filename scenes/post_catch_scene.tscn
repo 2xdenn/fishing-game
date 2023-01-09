@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://scripts/PickFish.gd" id="1_hjfss"]
+[ext_resource type="Script" path="res://scripts/fish_minigame/PickFish.gd" id="1_hjfss"]
 
 [node name="PickFish" type="Node"]
 script = ExtResource("1_hjfss")
